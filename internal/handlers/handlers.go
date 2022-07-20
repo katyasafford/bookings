@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/katyasafford/bookings/pkg/config"
-	"github.com/katyasafford/bookings/pkg/models"
-	"github.com/katyasafford/bookings/pkg/render"
+	"github.com/katyasafford/bookings/internal/config"
+	"github.com/katyasafford/bookings/internal/models"
+	"github.com/katyasafford/bookings/internal/render"
 )
 
 type Repository struct {
