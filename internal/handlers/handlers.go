@@ -7,22 +7,27 @@ import (
 	"net/http"
 
 	"github.com/katyasafford/bookings/internal/config"
+	"github.com/katyasafford/bookings/internal/driver"
 	"github.com/katyasafford/bookings/internal/forms"
 	"github.com/katyasafford/bookings/internal/helpers"
 	"github.com/katyasafford/bookings/internal/models"
 	"github.com/katyasafford/bookings/internal/render"
+	"github.com/katyasafford/bookings/internal/repository"
+	"github.com/katyasafford/bookings/internal/repository/dbrepo"
 )
 
 type Repository struct {
 	App *config.AppConfig
+	DB  repository.DatabaseRepo
 }
 
 var Repo *Repository
 
 // creates a new repository
-func NewRepo(a *config.AppConfig) *Repository {
+func NewRepo(a *config.AppConfig, db *driver.DB) *Repository {
 	return &Repository{
 		App: a,
+		DB:  dbrepo.NewPostgresRepo(db.SQL, a),
 	}
 }
 
